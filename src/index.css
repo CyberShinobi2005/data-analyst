@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Neubrutalism Utility Classes */
+@layer components {
+  .card-nb {
+    @apply border-3 border-black bg-white shadow-nb dark:bg-nbdark-surface dark:border-black dark:shadow-nb;
+  }
+
+  .card-nb-lg {
+    @apply border-3 border-black bg-white shadow-nb-lg dark:bg-nbdark-surface dark:border-black dark:shadow-nb;
+  }
+
+  .btn-nb {
+    @apply border-3 border-black font-bold uppercase tracking-wider shadow-nb transition-all duration-100 
+           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-nb-lg 
+           active:translate-x-1 active:translate-y-1 active:shadow-none cursor-pointer select-none;
+  }
+
+  .badge-nb {
+    @apply inline-flex items-center gap-1 border-2 border-black px-2 py-0.5 text-xs font-mono font-extrabold uppercase tracking-wide;
+  }
+}
+
+/* Custom crisp scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFDF5;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #121214;
+}
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border: 1px solid #000000;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #FFE066;
+  border: 1px solid #000000;
+}
+
+/* Print styling for 1-Click Executive Report */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .card-nb, .card-nb-lg {
+    box-shadow: none !important;
+    border: 2px solid #000000 !important;
+    page-break-inside: avoid;
+  }
+}
